@@ -51,7 +51,7 @@ function translates(lang){
     for(i in ids){
         let text = document.getElementById(ids[i]);
         if(i==16){
-            text.innerHTML = langs[key][i]+' <a href="sobre.html">'+langs[key][0]+'</a>'+langs[key][17];
+            text.innerHTML = langs[key][i]+' <a href="about.html">'+langs[key][0]+'</a>'+langs[key][17];
         }else if(i==17){
 
         }else{
