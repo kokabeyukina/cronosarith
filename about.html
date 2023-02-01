@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About</title>
+    <link rel="shortcut icon" href="imag/cronosi.ico" type="image/x-icon">
+    <link rel="stylesheet" href="style/sobre_style.css">
+</head>
+<body>
+    <header>
+        <div class="div1">
+            <img src="imag/cronosarith_logo.png" alt="" height="60" style="margin: 0;">
+            <h1 title="Página principal" id="logo"><a href="index.html">CronosArith</a></h1>
+        </div>
+        <select id="lang" onchange="translates(value)">
+            <option value="pt-br">Português</option>
+            <option value="en">English</option>
+            <option value="ja">日本語</option>
+        </select>
+    </header>
+    <div style="display: flex; justify-content: space-around;">
+    <div class="ad"></div>
+    <div class="board">
+        <h2>Funcionamento:</h2>
+        <p>
+            &ensp;Esta calculadora funciona usando a função dada no campo "função" e 
+            substituindo o x para cada ponto no eixo x (vermelho), 
+            e usando o valor retornado pela função, sendo o valor real a cordenada
+            do eixo y (azul) e o imaginário a do eixo z (verde). <br>
+
+            &ensp;A resolução define em quantas partes cada intevalo de x será cortado, 
+            deixando o gráfico mais definido conforme ela aumenta, portanto, quanto
+            maior o escopo ou a resolução mais pesado ficará o carregamento. <br>
+
+            &ensp;Pontos onde o limite positivo e o negativo não convergem acabam sendo
+            representados por uma linha reta ligando seus pontos laterais.  <br>
+
+            &ensp;Em alguns casos a calculadora prefere usar os valores imaginários em vez
+            dos possíveis reais, por exemplo no caso x^(1/3).
+        </p>
+        <h2>Funções:</h2>
+        <p>
+            &ensp;Para criar uma nova função, é necessário escreve-la usando o padrão requerido na lista 
+            mais abaixo e clicar no botão "+" ou apertar o enter. <br>
+
+            &ensp;A função será criada com uma cor aleatória. Para muda-la, basta colocar o código da cor
+            desejada no padrão HEX ou escrever seu nome em inglês. <br>
+
+            &ensp;Quanto mais funções carregadas, mais pesado fica o site. Para limpar as funções não usadas
+            basta clicar no botão vermelho ao lado do input de cor. <br>
+
+            &ensp;É possível usar apenas funções onde o f(x) está isolado, sendo, 
+            nessa versão, impossível de se calcular funções como f(x)e<sup>f(x)</sup>=x, por exemplo. <br>
+            
+            &ensp;Para criar um ponto basta escrever "point" e colocar as cordenadas entre
+            parenteses, por exemplo, point(2, 2, 1), também é possível usar expressões 
+            como point(log(2), -e^pi, 0).
+        </p>
+        <h2>Escopo de t:</h2>
+        <p>
+            &ensp;Infelizmente, para fazer uma cálculadora gráfica que aceite um número imaginário
+            como x e retorne outro número imaginário como y, seria preciso 4 dimesões de espaço, 
+            2 para as pertes imaginárias de x e y, e mais 2 para seus respectivos valores reais. <br>
+
+            &ensp;Mas, por sorte, ainda conseguimos experienciar 4 dimensões, 3 de espaço e uma de tempo.
+            Assim, podemos criar uma variável "t" que pode ser visualizada em uma animação. Com isso, 
+            temos o eixo z representando o valor imaginário de y e t representando o valor imaginário
+            de x.
+        </p>
+        <h2>Perspectiva:</h2>
+        <p>
+            &ensp;O gráfico é gerado usando um ""motor gráfico"" de perspectiva que diminuí os pontos mais distantes
+            e aumenta os mais próximos, essa técnica é útil para se ter uma noção 3d do gráfico, 
+            deixando-o mais realista. Mas quando se está tentando saber os pontos em apenas 
+            2 planos essa técnica acaba deixando o gráfico deformado, para não ter esse problema
+            basta desativar a opção "perspectiva".
+        </p>
+        <h2>Outras configurações:</h2>
+        <h3>Botões de foco:</h3>
+        <p>
+            &ensp;São usados para ter uma visão de apenas dois planos, focando apenas nos planos 
+            que nomeiam o botão. Fortemente recomendado que se desative a opção de perspectiva.
+        </p>
+        <h3>Tamanho da linha e do ponto:</h3>
+        <p>
+            &ensp;Mudam a grossura das linhas e o tamanho dos pontos.
+        </p>
+        <h3>Sensibilidade e distância:</h3>
+        <p>
+            &ensp;A sensibilidade define o arrasto do mause/dedo necessário para mudar o ângulo do gráfico.
+            E a distância define a "distância" ou o tamanho do gráfico.
+        </p>
+        <h3>Resolução e velocidade:</h3>
+        <p>
+            &ensp;A resolução, como já dito, define a quantidade de pontos para cada intevalo de x,
+            enquanto a velocidade define a velocidade da "animação" de t.
+        </p>
+
+        <h2>Códigos para representar a função:</h2>
+        <ul>
+            <li>ab => a*b</li>
+            <li>a/b == a/b</li>
+            <li>a<sup>b</sup> => a^b</li>
+            <li>√a => sqrt(a) | a^(1/2)</li>
+            <li>ln(a) => log(a)</li>
+            <li>log<sub>b</sub>(a) => log(a, b)</li>
+            <li>sen(a) => sin(a)</li>
+            <li>cos(a) == cos(a)</li>
+            <li>tg(a) => tan(a)</li>
+            <li>sen<sup>-1</sup>(a) => asin(a)</li>
+            <li>cos<sup>-1</sup>(a) => acos(a)</li>
+            <li>tg<sup>-1</sup>(a) => atan(a)</li>
+            <li>π => pi</li>
+            <li>e == e</li>
+            <li>i == i</li>
+            <li>senh(a) => sinh(a)</li>
+            <li>cosh(a) == cosh(a)</li>
+            <li>tgh(a) => tanh(a)</li>
+            <li>senh<sup>-1</sup>(a) => asinh(a)</li>
+            <li>cosh<sup>-1</sup>(a) => acosh(a)</li>
+            <li>tgh<sup>-1</sup>(a) => atanh(a)</li>
+            <li>sec(a) == sec(a)</li>
+            <li>csc(a) == csc(a)</li>
+            <li>cot(a) == cot(a)</li>
+            <li>sec<sup>-1</sup>(a) => asec(a)</li>
+            <li>csc<sup>-1</sup>(a) => acsc(a)</li>
+            <li>cot<sup>-1</sup>(a) => acot(a)</li>
+        </ul>
+
+        <h2>Alguns exemplos:</h2>
+        <ul>
+            <li>x^x</li>
+            <li>x^(x^2)</li>
+            <li>x^sin(x)</li>
+            <li>log(x^x)</li>
+            <li>atan(x^x)</li>
+            <li>tan(x^x)^x</li>
+            <li>e^(x*i)</li>
+            <li>(cos(12pi/13)+sin(12pi/13)*i)^x</li>
+            <li>(-1)^x</li>
+            <li>log(x)*(cos(x)+i*sin(x))</li>
+            <li>(x+(x^2-80)^(1/2))/2</li>
+            <li>(x-(x^2-80)^(1/2))/2</li>
+        </ul>
+        <hr>
+        <footer>
+            <p>Agradecimento especial aos responsáveis pela biblioteca de 
+               JavaScript, <a title="mathjs.org" href="https://mathjs.org/">Mathjs</a>, responsáveis por escrever o código
+               capaz de calcular números imaginários.
+            </p>
+            <div style="text-align: end; padding-bottom: 10px; font-size: small;">
+                Por Murilo B. Fernandes
+            </div>
+        </footer>
+    </div>
+    <div class="ad"></div>
+    </div>
+    <script src="script/sobre_lang.js"></script>
+</body>
+</html>

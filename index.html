@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta name="description" content="Cronosarith is a graphing calculator of imaginary 
+    numbers that allows you to see the value of y even outside the real plane">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CronosArith</title>
+    <link rel="shortcut icon" href="imag/cronosi.ico" type="image/x-icon">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+    <link rel="stylesheet" href="style/style.css">
+</head>
+<body>
+    <header>
+        <div class="div1">
+            <img src="imag/cronosarith_logo.png" alt="" height="60" style="margin: 0;">
+            <h1 title="Página principal" id="logo"><a href="index.html">CronosArith</a></h1>
+        </div>
+        <div class="div2">
+            <select id="lang" onchange="translates(value)">
+                <option value="pt-br">Português</option>
+                <option value="en">English</option>
+                <option value="ja">日本語</option>
+            </select>
+            <a title="Como usar" href="about.html" id="text0">SOBRE</a>
+        </div>
+    </header>
+    <div class="main">
+        <div class="menu" id="disp">
+            <h2 id="text1">Calc. Imaginária</h2>
+            <label for="func" id="text2">Função:</label>
+            <div class="functions">
+                <input type="text" name="func" id="func" value="" placeholder="f(x)" onchange="add()">
+                <button onclick="" title="Adicionar" id="addbutton"><span class="material-symbols-outlined">add</span></button>
+            </div>
+            <div id="flist" class="flist">
+                <div class="item">
+                    <h3>x^x</h3>
+                    <div>
+                        <div style="background: black;"></div>
+                        <input type="text" value="#000000" id="cor0" onchange="changecolor(0)">
+                        <button onclick="delf(0)"><span class="material-symbols-outlined">delete</span></button>
+                    </div>
+                </div>
+            </div>
+            <div id="submenu">
+                <div class="range">
+                    <div>
+                        <label for="x" id="tl">Escopo de t:</label>
+                        <div><label for="xic">x => x+</label><input type="number" name="xic" id="xic" value="0" step="0.01"><label for="xic">*i</label></div>
+                        <div class="scrolling">
+                            <input type="number" id="nxir" value="-4" step="0.1">
+                            <input type="range" id="d4scr" min="-4" max="4" value="0" step="0.01">
+                            <input type="number" id="xir" value="4" step="0.1">
+                        </div>
+                        <div class="play"><button id="playbutton" title="Iniciar animação" onclick="play4d()"><span class="material-symbols-outlined" id="playicon">play_circle</span></button></div>
+                    </div>
+                    <div>
+                        <label for="x" id="xl">Escopo de x:</label>
+                        <div>
+                            <input class="half" type="number" value="-4" id="nxr" name="x" step="0.1">
+                            <input class="half" type="number" value="4" id="xr" name="x" step="0.1">
+                        </div>
+                    </div>
+                    <div>
+                        <label for="y" id="yl">Escopo de y:</label>
+                        <div>
+                            <input class="half" type="number" value="-4" id="nyr" name="y" step="0.1">
+                            <input class="half" type="number" value="4" id="yr" name="y" step="0.1">
+                        </div>
+                    </div>
+                    <div>
+                        <label for="z" id="zl">Escopo de z:</label>
+                        <div>
+                            <input class="half" type="number" value="-4" id="nzr" name="z" step="0.1">
+                            <input class="half" type="number" value="4" id="zr" name="z" step="0.1">
+                        </div>
+                    </div>
+                    <div>
+                        <label for="step" id="sl">Distância entre os pontos:</label>
+                        <div>
+                            <input style="background: rgb(208, 150, 150);" class="thirt" type="number" value="1" id="sx" min="0.01" name="step" step="0.01">
+                            <input style="background: rgb(150, 163, 208);" class="thirt" type="number" value="1" id="sy" min="0.01" name="step" step="0.01">
+                            <input style="background: rgb(150, 208, 157);" class="thirt" type="number" value="1" id="sz" min="0.01" name="step" step="0.01">
+                        </div>
+                    </div>
+                </div>
+                <div class="conf">
+                    <div style="display: flex; justify-content: space-around;">
+                        <div class="check"><input type="checkbox" id="pers" name="pers" checked><label for="pers" id="text3">Perspectiva</label></div>
+                        <div class="check"><input type="checkbox" id="borda" name="pers"><label for="pers" id="text4">Borda</label></div>
+                    </div>
+                    <div style="margin-bottom: 10px; display: flex; justify-content: space-between;">
+                        <button id="zp" title="Focar no plano x e y" onclick="resetAngle('z')">X & Y</button>
+                        <button id="yp" title="Focar no plano x e z" onclick="resetAngle('y')">X & Z</button>
+                        <button id="xp" title="Focar no plano y e z" onclick="resetAngle('x')">Y & Z</button>
+                    </div>
+                    <label for="wd" id="text5">Grossura da linha:</label><input type="number" value="3" min="1" id="wd" step="0.1" name="wd">
+                    <label for="pwd" id="text6">Grossura do ponto:</label><input type="number" value="5" min="1" id="pwd" step="0.1" name="pwd">
+                    <label for="vel" id="text7">Sensibilidade:</label><input type="number" value="0.03" min="0" id="vel" step="0.001" name="vel">
+                    <div style="display: flex; justify-content: space-between;">
+                        <div style="width: 48%;">
+                            <label for="rez" id="text8">Resolução:</label><input style="width: 100%; margin-top: 4px;" type="number" value="100" min="0" id="rez" name="rez">
+                        </div>
+                        <div style="width: 48%;">
+                            <label for="vel" id="text9">velocidade:</label><input style="width: 97%; margin-top: 4px;" step="0.001" type="number" value="0.01" min="0" id="d4vel" name="vel">
+                        </div>
+                    </div>
+                    <label for="dis" id="text10">Distância:</label><input type="number" value="3" min="1" id="dis" step="0.1" name="dis">
+                </div>
+            </div>
+        </div>
+        <div class="graf">
+            <canvas id="fundo" width="900" height="900">
+                <p>O browser utilizado não suporta o canvas</p>
+            </canvas>
+        </div>
+    </div>
+    <div class="aviso">
+        <p id="text11">Para qualquer dúvida, basta clicar na opção <a href="about.html">SOBRE</a>.</p>
+    </div>
+    <script src="https://unpkg.com/mathjs@11.5.0/lib/browser/math.js"></script>
+    <script src="script/lang.js"></script>
+    <script src="script/script.js"></script>
+</body>
+</html>
