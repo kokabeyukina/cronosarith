@@ -31,65 +31,56 @@
             <h2 id="text1">Calc. Imaginária</h2>
             <label for="func" id="text2">Função:</label>
             <div class="functions">
-                <input type="text" name="func" id="func" value="" placeholder="f(x)" onchange="add()">
-                <button onclick="" title="Adicionar" id="addbutton"><span class="material-symbols-outlined">add</span></button>
+                <input type="text" name="func" id="funcInputObj" value="" placeholder="f(x)" onKeyDown="if(event.keyCode==13) add();">
+                <button onclick="add()" title="Adicionar" id="addbutton"><span class="material-symbols-outlined">add</span></button>
             </div>
-            <div id="flist" class="flist">
-                <div class="item">
-                    <h3>x^x</h3>
-                    <div>
-                        <div style="background: black;"></div>
-                        <input type="text" value="#000000" id="cor0" onchange="changecolor(0)">
-                        <button onclick="delf(0)"><span class="material-symbols-outlined">delete</span></button>
-                    </div>
-                </div>
-            </div>
+            <div id="funcListObj" class="flist"></div>
             <div id="submenu">
                 <div class="range">
                     <div>
                         <label for="x" id="tl">Escopo de t:</label>
-                        <div><label for="xic">x => x+</label><input type="number" name="xic" id="xic" value="0" step="0.01"><label for="xic">*i</label></div>
+                        <div><label for="xic">x => x+</label><input type="number" name="xic" onchange="updateTimeInput()" id="tInputObj" value="0" step="0.01"><label for="xic">*i</label></div>
                         <div class="scrolling">
-                            <input type="number" id="nxir" value="-4" step="0.1">
-                            <input type="range" id="d4scr" min="-4" max="4" value="0" step="0.01">
-                            <input type="number" id="xir" value="4" step="0.1">
+                            <input type="number" id="tNegRangeObj" value="-4" step="0.1" onchange="updateDimentions(2)">
+                            <input type="range" id="tScrollObj" min="-4" max="4" value="0" step="0.01">
+                            <input type="number" id="tPosRangeObj" value="4" step="0.1" onchange="updateDimentions(2)">
                         </div>
                         <div class="play"><button id="playbutton" title="Iniciar animação" onclick="play4d()"><span class="material-symbols-outlined" id="playicon">play_circle</span></button></div>
                     </div>
                     <div>
                         <label for="x" id="xl">Escopo de x:</label>
                         <div>
-                            <input class="half" type="number" value="-4" id="nxr" name="x" step="0.1">
-                            <input class="half" type="number" value="4" id="xr" name="x" step="0.1">
+                            <input class="half" type="number" value="-4" id="xNegRangeObj" name="x" step="0.1" onchange="updateDimentions(1)">
+                            <input class="half" type="number" value="4"  id="xPosRangeObj"  name="x" step="0.1" onchange="updateDimentions(1)">
                         </div>
                     </div>
                     <div>
                         <label for="y" id="yl">Escopo de y:</label>
                         <div>
-                            <input class="half" type="number" value="-4" id="nyr" name="y" step="0.1">
-                            <input class="half" type="number" value="4" id="yr" name="y" step="0.1">
+                            <input class="half" type="number" value="-4" id="yNegRangeObj" name="y" step="0.1" onchange="updateDimentions(3)">
+                            <input class="half" type="number" value="4"  id="yPosRangeObj"  name="y" step="0.1" onchange="updateDimentions(3)">
                         </div>
                     </div>
                     <div>
                         <label for="z" id="zl">Escopo de z:</label>
                         <div>
-                            <input class="half" type="number" value="-4" id="nzr" name="z" step="0.1">
-                            <input class="half" type="number" value="4" id="zr" name="z" step="0.1">
+                            <input class="half" type="number" value="-4" id="zNegRangeObj" name="z" step="0.1" onchange="updateDimentions(4)">
+                            <input class="half" type="number" value="4"  id="zPosRangeObj"  name="z" step="0.1" onchange="updateDimentions(4)">
                         </div>
                     </div>
                     <div>
                         <label for="step" id="sl">Distância entre os pontos:</label>
                         <div>
-                            <input style="background: rgb(208, 150, 150);" class="thirt" type="number" value="1" id="sx" min="0.01" name="step" step="0.01">
-                            <input style="background: rgb(150, 163, 208);" class="thirt" type="number" value="1" id="sy" min="0.01" name="step" step="0.01">
-                            <input style="background: rgb(150, 208, 157);" class="thirt" type="number" value="1" id="sz" min="0.01" name="step" step="0.01">
+                            <input style="background: rgb(208, 150, 150);" class="thirt" type="number" value="1" id="xDistanceObj" min="0.01" name="step" step="0.01" onchange="updateExisPointsDistance()">
+                            <input style="background: rgb(150, 163, 208);" class="thirt" type="number" value="1" id="yDistanceObj" min="0.01" name="step" step="0.01" onchange="updateExisPointsDistance()">
+                            <input style="background: rgb(150, 208, 157);" class="thirt" type="number" value="1" id="zDistanceObj" min="0.01" name="step" step="0.01" onchange="updateExisPointsDistance()">
                         </div>
                     </div>
                 </div>
                 <div class="conf">
                     <div style="display: flex; justify-content: space-around;">
-                        <div class="check"><input type="checkbox" id="pers" name="pers" checked><label for="pers" id="text3">Perspectiva</label></div>
-                        <div class="check"><input type="checkbox" id="borda" name="pers"><label for="pers" id="text4">Borda</label></div>
+                        <div class="check"><input type="checkbox" id="perspective" name="pers" checked><label for="pers" id="text3">Perspectiva</label></div>
+                        <div class="check"><input type="checkbox" id="border" name="pers" onchange="console.log('cu')"><label for="pers" id="text4">Borda</label></div>
                     </div>
                     <div style="margin-bottom: 10px; display: flex; justify-content: space-between;">
                         <button id="zp" title="Focar no plano x e y" onclick="resetAngle('z')">X & Y</button>
@@ -98,33 +89,33 @@
                     </div>
                     <label for="grid" id="text12" style="margin: 0;">Grade:</label>
                     <div style="display: flex; justify-content: space-around; width: 80%;width: 100%;">
-                        <div class="check"><input type="checkbox" name="grid" onclick="refresh=true" id="xygrid"><label for="grid">X&Y</label style="margin:0;"></div>
-                        <div class="check"><input type="checkbox" name="grid" onclick="refresh=true" id="xzgrid"><label for="grid">X&Z</label style="margin:0;"></div>
-                        <div class="check"><input type="checkbox" name="grid" onclick="refresh=true" id="yzgrid"><label for="grid">Y&Z</label style="margin:0;"></div>
+                        <div class="check"><input type="checkbox" name="grid" onclick="updateGrids()" id="xygrid"><label for="grid">X&Y</label style="margin:0;"></div>
+                        <div class="check"><input type="checkbox" name="grid" onclick="updateGrids()" id="xzgrid"><label for="grid">X&Z</label style="margin:0;"></div>
+                        <div class="check"><input type="checkbox" name="grid" onclick="updateGrids()" id="yzgrid"><label for="grid">Y&Z</label style="margin:0;"></div>
                     </div>
-                    <label for="wd" id="text5">Grossura da linha:</label><input type="number" value="3" min="1" id="wd" step="0.1" name="wd">
-                    <label for="pwd" id="text6">Grossura do ponto:</label><input type="number" value="5" min="1" id="pwd" step="0.1" name="pwd">
+                    <label for="wd" id="text5">Grossura da linha:</label><input type="number" value="3" min="1" id="lineWidthObj" step="0.1" name="wd">
+                    <label for="pwd" id="text6">Grossura do ponto:</label><input type="number" value="5" min="1" id="pointWidthObj" step="0.1" name="pwd">
                     <div style="display: flex; justify-content: space-between;">
                         <div style="width: 48%;">
-                            <label for="vel" id="text7">Sensibilidade:</label><input style="width: 100%; margin-top: 4px;" type="number" value="0.03" min="0" id="vel" step="0.001" name="vel">
+                            <label for="vel" id="text7">Sensibilidade:</label><input style="width: 100%; margin-top: 4px;" type="number" value="1" min="0" id="sensibiltyObj" step="0.1" name="vel">
                         </div>
                         <div style="width: 48%;">
-                            <label for="dis" id="text10">Distância:</label><input style="width: 97%; margin-top: 4px;" type="number" value="3" min="1" id="dis" step="0.1" name="dis">
+                            <label for="dis" id="text10">Distância:</label><input style="width: 97%; margin-top: 4px;" type="number" value="3" min="1" id="distanceObj" step="0.1" name="dis">
                         </div>
                     </div>
                     <div style="display: flex; justify-content: space-between;">
                         <div style="width: 48%;">
-                            <label for="rez" id="text8">Resolução:</label><input style="width: 100%; margin-top: 4px;" type="number" value="100" min="0" id="rez" name="rez">
+                            <label for="rez" id="text8">Resolução:</label><input style="width: 100%; margin-top: 4px;" type="number" value="1000" min="0" id="rezolutionObj" name="rez" onchange="updateFuncCords();">
                         </div>
                         <div style="width: 48%;">
-                            <label for="vel" id="text9">velocidade:</label><input style="width: 97%; margin-top: 4px;" step="0.001" type="number" value="0.01" min="0" id="d4vel" name="vel">
+                            <label for="vel" id="text9">velocidade:</label><input style="width: 97%; margin-top: 4px;" step="0.001" type="number" value="0.01" min="0" id="tVelocityObj" name="vel" onchange="vel = Number(velo.value);">
                         </div>
                     </div>
                 </div>
             </div>
         </div>
         <div class="graf">
-            <canvas id="fundo" width="900" height="900">
+            <canvas id="fundoObj" width="900" height="900">
                 <p>O browser utilizado não suporta o canvas</p>
             </canvas>
         </div>

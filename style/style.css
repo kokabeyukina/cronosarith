@@ -159,6 +159,9 @@ label{
     overflow-y: scroll;
     border-radius: 4px;
 }
+.flistInput{
+    margin-bottom: 0px;
+}
 ::-webkit-scrollbar{
     width: 10px;
     border-radius: 20px;
@@ -290,7 +293,7 @@ label{
     color: rgb(204, 188, 145);
     padding-right: 60%;
 }
-#xic{
+#tInputObj{
     width: 49pt;
     margin: 0 4px 0 4px;
 }
@@ -420,7 +423,7 @@ canvas:active{
     letter-spacing: 1px;
 } 
 
-#fundo{
+#fundoObj{
     height: 70vh;
     width: auto;
 }
