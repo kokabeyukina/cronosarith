@@ -1,5 +1,6 @@
 # cronosarith
 
-independent project that displays a complex numbers graphing calculator using javascript
-created by Murilo B. Fernandes
+Independent project that displays a complex numbers graphing calculator using javascript\
+Created by Murilo B. Fernandes
+\ \
 https://cronosarith.com/
